@@ -11,13 +11,13 @@ import ru.netology.conditional.systemprofile.SystemProfile;
 public class JavaConfig {
 
     @Bean
-    @ConditionalOnProperty(prefix = "netology.profile", name = "dev", havingValue = "true")
+    @ConditionalOnProperty(prefix = "netology.profile", name = "dev", havingValue = "true", matchIfMissing = false)
     public SystemProfile devProfile() {
         return new DevProfile();
     }
 
     @Bean
-    @ConditionalOnProperty(prefix = "netology.profile", name = "dev", havingValue = "false")
+    @ConditionalOnProperty(prefix = "netology.profile", name = "dev", havingValue = "false", matchIfMissing = true)
     public SystemProfile prodProfile() {
         return new ProductionProfile();
     }
